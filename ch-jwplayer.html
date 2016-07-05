@@ -1,0 +1,46 @@
+<link rel="import" href="../polymer/polymer.html">
+<dom-module id="ch-jwplayer">
+
+    <style>
+
+    </style>
+
+    <script src='jwplayer.js'></script>
+
+    <template>
+
+        <div>
+            <H3>This video is streamed by CloudFront and played by JW Player 7.</H3>
+            <div id="my-video"></div>
+        </div>
+    </template>
+
+
+<script>
+
+    Polymer({
+        is:'ch-jwplayer',
+        properties:{
+            key:{
+                type:String,
+                value:"your-key"
+            }
+
+        },
+
+        ready:function () {
+            jwplayer.key=this.key;
+            jwplayer("my-video").setup({
+                file: "rtmp://s1y5zd93uqv0ml.cloudfront.net/cfx/st/01_02-what_you_should_know.mp4",
+                width: "720",
+                height: "480",
+                primary: "html5"
+            });
+        }
+    });
+
+
+</script>
+
+
+</dom-module>
